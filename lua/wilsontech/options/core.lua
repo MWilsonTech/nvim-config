@@ -42,7 +42,7 @@ local is_ssh = vim.env.SSH_TTY ~= nil
 local clip_path = '/mnt/c/Windows/System32/clip.exe'
 local is_wsl = vim.fn.has('wsl') == 1 or vim.env.WSL_DISTRO_NAME ~= nil
 local has_clip = vim.fn.executable(clip_path) == 1
-if is_wsl and has_clip then
+if not is_ssh and is_wsl and has_clip then
   local powershell_paste = {
      '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe',
     '-NoLogo',
